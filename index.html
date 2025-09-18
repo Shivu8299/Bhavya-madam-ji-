@@ -73,19 +73,6 @@
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- Redirecting Screen --- */
-        #redirect-screen .loader {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--primary-pink);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        #redirect-screen h1 { font-size: 24px; margin-top: 20px; color: var(--text-dark); }
-        #redirect-screen p { font-size: 14px; color: var(--text-light); margin-top: 5px; }
-
         /* --- Envelope Screen --- */
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         .envelope-wrapper {
@@ -226,13 +213,7 @@
 <body>
 
     <div class="container">
-        <div id="redirect-screen" class="screen active">
-            <div class="loader"></div>
-            <h1>Redirecting</h1>
-            <p>This conversation is automated by Manychat</p>
-        </div>
-
-        <div id="envelope-screen" class="screen">
+        <div id="envelope-screen" class="screen active">
             <div class="envelope-wrapper" id="envelopeWrapper">
                 <img src="envelope-kitty.png" alt="Kitty Peeking" class="kitty-peeking">
                 <div class="envelope">
@@ -263,7 +244,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"> <img src="moment1.png" alt="Moment 1"> <p>sare din Masti karte😋😋</p> </div>
                         <div class="swiper-slide"> <img src="moment2.png" alt="Moment 2"> <p>we are perfect duo</p> </div>
-                        <div class="swiper-slide"> <img src="moment3.png" alt="Moment 3"> <p>1 am batman 🗿🕺</p> </div>
+                        <div class="swiper-slide"> <img src="moment3.png" alt="Moment 3"> <p>t am batman 🗿🕺</p> </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -272,9 +253,9 @@
             <section class="card">
                 <h2 class="section-title" style="color: #c781a0;">Little Notes From My Heart</h2>
                  <div class="notes-grid">
-                    <div class="note"> <div class="front">You make every day brighter ☀️</div> <div class="back">you the perfect one💕</div> </div>
-                    <div class="note"> <div class="front">You're my favorite person 💕</div> <div class="back">why are you so perfect 💕</div> </div>
-                    <div class="note"> <div class="front">I promise to do better ✨</div> <div class="back">i love you yaar 💕</div> </div>
+                    <div class="note"> <div class="front">You make every day brighter ☀️</div> <div class="back">Made with love 💕</div> </div>
+                    <div class="note"> <div class="front">You're my favorite person 💕</div> <div class="back">Made with love 💕</div> </div>
+                    <div class="note"> <div class="front">I promise to do better ✨</div> <div class="back">Made with love 💕</div> </div>
                 </div>
             </section>
 
@@ -341,7 +322,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const redirectScreen = document.getElementById('redirect-screen');
             const envelopeScreen = document.getElementById('envelope-screen');
             const mainContent = document.getElementById('main-content');
             const envelopeWrapper = document.getElementById('envelopeWrapper');
@@ -349,11 +329,6 @@
             let playlistSwiper;
             let lastScrollPosition = 0;
             
-            setTimeout(() => {
-                redirectScreen.classList.remove('active');
-                envelopeScreen.classList.add('active');
-            }, 2500);
-
             const openEnvelope = () => {
                 if (!envelopeWrapper.classList.contains('open')) {
                     envelopeWrapper.classList.add('open');
@@ -380,7 +355,12 @@
                 modal.classList.add('active');
             };
 
-                        };
+            const closeModal = (modal) => {
+                document.body.classList.remove('modal-open');
+                document.body.style.top = '';
+                window.scrollTo(0, lastScrollPosition);
+                modal.classList.remove('active');
+            };
 
             const letterModal = document.getElementById('letter-modal');
             document.getElementById('readLetterCard').addEventListener('click', () => openModal(letterModal));
@@ -508,7 +488,8 @@
                 if (e.target.closest('.card, .swiper-slide')) return;
                 const heart = document.createElement('div');
                 heart.classList.add('flying-heart'); heart.innerHTML = '♥';
-                heart.style.left = `${e.clientX}px`; heart.style.top = `${e.clientY}px`;
+                heart.style.left = `${e.clientX}px`;
+                heart.style.top = `${e.clientY}px`;
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 1000);
             });

@@ -14,13 +14,14 @@
 
     <style>
         :root {
-            --bg-gradient: linear-gradient(180deg, #fde7f0 0%, #fce1e8 100%);
-            --card-bg: rgba(255, 255, 255, 0.7);
-            --primary-pink: #ff74a4;
-            --secondary-purple: #9f6ea3;
-            --text-dark: #333;
-            --text-light: #555;
-            --accent-yellow: #fdd78d;
+            /* NEW PURPLE AND PINK COLOR THEME */
+            --bg-gradient: linear-gradient(160deg, #a881d4 0%, #ff95b7 100%);
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --primary-pink: #ff5c97;
+            --primary-purple: #8e5cb7;
+            --text-dark: #3a2a47;
+            --text-light: #5c4d69;
+            --accent-yellow: #fde2a6;
             --accent-purple: #e3d1f8;
             --accent-blue: #d1e5f8;
             --font-main: 'Poppins', sans-serif;
@@ -47,7 +48,6 @@
             perspective: 1000px;
         }
         
-        /* UPDATED STYLE FOR SCROLL LOCK */
         html.modal-open {
             overflow: hidden;
         }
@@ -93,7 +93,7 @@
         .envelope-wrapper.open .envelope-flap { transform: rotateX(180deg); }
         .heart-seal {
             position: absolute; top: 75px; left: 50%; transform: translateX(-50%); font-size: 28px;
-            color: white; background: #ff508c; width: 40px; height: 40px; display: flex;
+            color: white; background: #ff3882; width: 40px; height: 40px; display: flex;
             align-items: center; justify-content: center; border-radius: 50%; z-index: 11;
         }
         .kitty-peeking {
@@ -104,7 +104,7 @@
         .open-button {
             margin-top: 40px; background: white; color: var(--primary-pink); border: none;
             padding: 12px 30px; border-radius: 50px; font-size: 16px; font-weight: 600;
-            box-shadow: 0 4px 15px rgba(255, 116, 164, 0.4); cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 92, 151, 0.4); cursor: pointer;
         }
 
         #main-content {
@@ -115,14 +115,14 @@
             background: var(--card-bg); border-radius: 20px; padding: 20px;
             margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); backdrop-filter: blur(10px);
         }
-        .header h1 { font-family: var(--font-display); color: var(--primary-pink); font-size: 36px; }
+        .header h1 { font-family: var(--font-display); color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2); font-size: 36px; }
         .header { text-align: center; margin-bottom: 20px; }
-        .header p { color: var(--text-light); }
+        .header p { color: #f0e8f7; }
         .letter-card { text-align: center; cursor: pointer; }
         .letter-card .icon { font-size: 28px; color: var(--primary-pink); }
         .letter-card h2 { font-size: 18px; color: var(--text-dark); margin: 5px 0; }
         .letter-card p { font-size: 14px; color: var(--text-light); }
-        .section-title { font-family: var(--font-display); color: #e598b9; font-size: 28px; text-align: center; margin-bottom: 15px; }
+        .section-title { font-family: var(--font-display); color: var(--primary-purple); font-size: 28px; text-align: center; margin-bottom: 15px; }
         .section-subtitle { text-align: center; font-size: 14px; color: var(--text-light); margin-top: -10px; margin-bottom: 20px; }
 
         .swiper { width: 100%; padding-bottom: 30px; }
@@ -143,20 +143,20 @@
         .note .front, .note .back {
             position: absolute; width: 100%; height: 100%; top: 0; left: 0; display: flex;
             align-items: center; justify-content: center; backface-visibility: hidden;
-            -webkit-backface-visibility: hidden; padding: 10px; text-align: center;
+            -webkit-backface-visibility: hidden; padding: 10px; text-align: center; font-weight: 600;
         }
         .note .back { transform: rotateY(180deg); }
         .note.flipped { transform: rotateY(180deg); }
-        .note:nth-child(1) { background-color: var(--accent-yellow); }
-        .note:nth-child(2) { background-color: var(--accent-purple); }
-        .note:nth-child(3) { background-color: var(--accent-blue); }
+        .note:nth-child(1) { background-color: var(--accent-yellow); color: #8c6f37; }
+        .note:nth-child(2) { background-color: var(--accent-purple); color: #6a5a7d; }
+        .note:nth-child(3) { background-color: var(--accent-blue); color: #526374; }
 
         .playlist-slide { display: flex; flex-direction: column; align-items: center; gap: 15px; }
         .playlist-slide img { height: 150px; object-fit: cover; }
         .song-title { font-weight: 700; font-size: 18px; }
         .audio-player { width: 100%; }
         .controls { display: flex; justify-content: center; align-items: center; gap: 20px; }
-        .controls button { background: none; border: none; font-size: 24px; color: var(--secondary-purple); cursor: pointer; }
+        .controls button { background: none; border: none; font-size: 24px; color: var(--primary-purple); cursor: pointer; }
         
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);
@@ -167,20 +167,23 @@
         .modal-content {
             background: var(--bg-gradient); padding: 30px; border-radius: 20px; width: 90%;
             max-width: 400px; position: relative; text-align: center; animation: zoomIn 0.3s ease;
+            /* NEW: Styles for modal scrolling */
+            max-height: 85vh;
+            overflow-y: auto;
         }
         @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .modal-close {
             position: absolute; top: 15px; right: 15px; background: #eee; border: none; width: 30px;
             height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; z-index: 10;
         }
-        .letter-header { text-align: center; font-size: 22px; font-weight: 600; color: var(--primary-pink); margin-bottom: 20px; }
-        .letter-body { font-size: 16px; color: var(--text-light); line-height: 1.6; margin-bottom: 25px; }
+        .letter-header { text-align: center; font-size: 22px; font-weight: 600; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.2); margin-bottom: 20px; }
+        .letter-body { font-size: 16px; color: #f0e8f7; line-height: 1.6; margin-bottom: 25px; }
         .letter-signature { text-align: right; }
-        .letter-signature p { margin: 0; color: var(--secondary-purple); font-weight: 600; }
+        .letter-signature p { margin: 0; color: white; font-weight: 600; }
         
         #playGameCard { text-align: center; cursor: pointer; }
-        #game-modal h2 { font-family: var(--font-display); color: var(--primary-pink); font-size: 28px; margin-bottom: 10px; }
-        #game-modal p { color: var(--text-light); margin-bottom: 20px; }
+        #game-modal h2 { font-family: var(--font-display); color: white; font-size: 28px; margin-bottom: 10px; }
+        #game-modal p { color: #f0e8f7; margin-bottom: 20px; }
         #game-modal button { background: var(--primary-pink); color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-size: 16px; }
         .game-board { position: relative; height: 400px; background: white; border-radius: 15px; overflow: hidden; margin-top: 20px; cursor: pointer; }
         .game-stats { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; color: var(--text-dark); }
@@ -197,8 +200,8 @@
         .flying-heart {
             position: fixed; font-size: 20px; z-index: 9999; pointer-events: none;
             animation: fly 1s ease-out forwards;
-            background: linear-gradient(45deg, #ff74a4, #c482c7);
-            -webkit-background-clip: text; background-clip: text; color: transparent;
+            /* NEW: Dark pink color */
+            color: #D90166;
         }
         @keyframes fly { 0% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 100% { transform: translate(-50%, -150px) scale(0.5); opacity: 0; } }
     </style>
@@ -244,7 +247,7 @@
             </section>
 
             <section class="card">
-                <h2 class="section-title" style="color: #c781a0;">Little Notes From My Heart</h2>
+                <h2 class="section-title" style="color: var(--primary-purple);">Little Notes From My Heart</h2>
                  <div class="notes-grid">
                     <div class="note"> <div class="front">You make every day brighter ☀️</div> <div class="back">i love you yaar</div> </div>
                     <div class="note"> <div class="front">You're my favorite person 💕</div> <div class="back">tu kitni achi hai yaar</div> </div>
@@ -253,7 +256,7 @@
             </section>
 
             <section class="card">
-                 <h2 class="section-title" style="color: #6a82e4;">Playlist For You</h2>
+                 <h2 class="section-title" style="color: var(--primary-purple);">Playlist For You</h2>
                  <p class="section-subtitle">Songs dedicated to u</p>
                  <div class="swiper playlist-swiper">
                     <div class="swiper-wrapper">
@@ -287,7 +290,7 @@
         <div class="modal-content">
             <button class="modal-close">&times;</button>
             <div class="letter-header">❤️ my Kuchupuchu bhavya ❤️</div>
-            <div class="letter-body"> <p>mujhe pata hai ki me acha bestfriend nhi Tumhare or abhi ache friend honge but mere liye sirf tu meri sabse pyari Best friend ho</p> </div>
+            <div class="letter-body"> <p>mujhe pata hai ki me acha bestfriend nhi hu Tumhare or abhi ache friend honge but mere liye sirf tu meri sabse pyari Best friend ho</p> </div>
             <div class="letter-signature"> <p>With all my love,</p> <p>Yours sincerely, shivshant</p> </div>
         </div>
     </div>
@@ -372,9 +375,6 @@
                             }
                         });
                         audio.play();
-                        playPauseBtn.querySelector('i').classList.replace('fa-play', 'fa-pause');
-                    } else {
-                        audio.pause();
                         playPauseBtn.querySelector('i').classList.replace('fa-pause', 'fa-play');
                     }
                 });
@@ -475,8 +475,8 @@
                 }, 4000);
             }
 
-            mainContent.addEventListener('click', e => {
-                if (e.target.closest('.card, .swiper-slide')) return;
+            document.body.addEventListener('click', e => {
+                if (e.target.closest('button, .card, .swiper-slide, .note, .modal')) return;
                 const heart = document.createElement('div');
                 heart.classList.add('flying-heart'); heart.innerHTML = '♥';
                 heart.style.left = `${e.clientX}px`;

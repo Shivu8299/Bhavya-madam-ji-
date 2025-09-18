@@ -34,8 +34,11 @@
             font-family: var(--font-main);
         }
 
-        body {
+        html, body {
             background: var(--bg-gradient);
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,7 +48,7 @@
         }
         
         /* UPDATED STYLE FOR SCROLL LOCK */
-        body.modal-open {
+        html.modal-open {
             overflow: hidden;
         }
 
@@ -57,7 +60,6 @@
             overflow: hidden;
         }
 
-        /* --- Screens --- */
         .screen {
             display: none;
             flex-direction: column;
@@ -72,7 +74,6 @@
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- Envelope Screen --- */
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         .envelope-wrapper {
             position: relative;
@@ -106,7 +107,6 @@
             box-shadow: 0 4px 15px rgba(255, 116, 164, 0.4); cursor: pointer;
         }
 
-        /* --- Main Content --- */
         #main-content {
             display: none; padding: 10px; width: 100%;
             animation: fadeIn 1s ease; position: relative;
@@ -125,7 +125,6 @@
         .section-title { font-family: var(--font-display); color: #e598b9; font-size: 28px; text-align: center; margin-bottom: 15px; }
         .section-subtitle { text-align: center; font-size: 14px; color: var(--text-light); margin-top: -10px; margin-bottom: 20px; }
 
-        /* --- Swipers --- */
         .swiper { width: 100%; padding-bottom: 30px; }
         .swiper-slide {
             background: white; border-radius: 15px; text-align: center; padding: 15px;
@@ -135,7 +134,6 @@
         .swiper-slide p { color: var(--text-dark); font-weight: 600; }
         .swiper-pagination-bullet-active { background-color: var(--primary-pink) !important; }
 
-        /* --- Notes Section --- */
         .notes-grid { display: flex; flex-direction: column; gap: 15px; }
         .note {
             padding: 20px; border-radius: 15px; cursor: pointer; transition: transform 0.6s;
@@ -153,7 +151,6 @@
         .note:nth-child(2) { background-color: var(--accent-purple); }
         .note:nth-child(3) { background-color: var(--accent-blue); }
 
-        /* --- Playlist Section --- */
         .playlist-slide { display: flex; flex-direction: column; align-items: center; gap: 15px; }
         .playlist-slide img { height: 150px; object-fit: cover; }
         .song-title { font-weight: 700; font-size: 18px; }
@@ -161,7 +158,6 @@
         .controls { display: flex; justify-content: center; align-items: center; gap: 20px; }
         .controls button { background: none; border: none; font-size: 24px; color: var(--secondary-purple); cursor: pointer; }
         
-        /* --- Modals --- */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);
             display: flex; justify-content: center; align-items: center; z-index: 1000;
@@ -182,7 +178,6 @@
         .letter-signature { text-align: right; }
         .letter-signature p { margin: 0; color: var(--secondary-purple); font-weight: 600; }
         
-        /* --- Game --- */
         #playGameCard { text-align: center; cursor: pointer; }
         #game-modal h2 { font-family: var(--font-display); color: var(--primary-pink); font-size: 28px; margin-bottom: 10px; }
         #game-modal p { color: var(--text-light); margin-bottom: 20px; }
@@ -199,7 +194,6 @@
         }
         @keyframes bonusFade { 0% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -50px); } }
         
-        /* --- Magic Touch Effect --- */
         .flying-heart {
             position: fixed; font-size: 20px; z-index: 9999; pointer-events: none;
             animation: fly 1s ease-out forwards;
@@ -242,8 +236,8 @@
                 <div class="swiper moments-swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"> <img src="moment1.png" alt="Moment 1"> <p>sare din Masti karte😋😋</p> </div>
-                        <div class="swiper-slide"> <img src="moment2.png" alt="Moment 2"> <p>we are perfect duo</p> </div>
-                        <div class="swiper-slide"> <img src="moment3.png" alt="Moment 3"> <p>t am batman 🗿🕺</p> </div>
+                        <div class="swiper-slide"> <img src="moment2.png" alt="Moment 2"> <p>I am batman 🗿🕺</p> </div>
+                        <div class="swiper-slide"> <img src="moment3.png" alt="Moment 3"> <p>we are perfect duo</p> </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -252,9 +246,9 @@
             <section class="card">
                 <h2 class="section-title" style="color: #c781a0;">Little Notes From My Heart</h2>
                  <div class="notes-grid">
-                    <div class="note"> <div class="front">You make every day brighter ☀️</div> <div class="back">Made with love 💕</div> </div>
-                    <div class="note"> <div class="front">You're my favorite person 💕</div> <div class="back">Made with love 💕</div> </div>
-                    <div class="note"> <div class="front">I promise to do better ✨</div> <div class="back">Made with love 💕</div> </div>
+                    <div class="note"> <div class="front">You make every day brighter ☀️</div> <div class="back">i love you yaar</div> </div>
+                    <div class="note"> <div class="front">You're my favorite person 💕</div> <div class="back">tu kitni achi hai yaar</div> </div>
+                    <div class="note"> <div class="front">I promise to do better ✨</div> <div class="back">you my bestfriend</div> </div>
                 </div>
             </section>
 
@@ -326,6 +320,7 @@
             const envelopeWrapper = document.getElementById('envelopeWrapper');
             const openLetterBtn = document.getElementById('openLetterBtn');
             let playlistSwiper;
+            let lastScrollPosition = 0;
             
             const openEnvelope = () => {
                 if (!envelopeWrapper.classList.contains('open')) {
@@ -346,15 +341,16 @@
                 pagination: { el: '.swiper-pagination' },
             });
 
-            // UPDATED MODAL FUNCTIONS
             const openModal = (modal) => {
-                document.body.classList.add('modal-open');
+                lastScrollPosition = window.scrollY;
+                document.documentElement.style.overflow = 'hidden';
                 modal.classList.add('active');
             };
 
             const closeModal = (modal) => {
-                document.body.classList.remove('modal-open');
+                document.documentElement.style.overflow = '';
                 modal.classList.remove('active');
+                window.scrollTo(0, lastScrollPosition);
             };
 
             const letterModal = document.getElementById('letter-modal');
@@ -375,7 +371,8 @@
                                 otherBtnIcon.classList.remove('fa-pause'); otherBtnIcon.classList.add('fa-play');
                             }
                         });
-                        audio.play();                        playPauseBtn.querySelector('i').classList.replace('fa-play', 'fa-pause');
+                        audio.play();
+                        playPauseBtn.querySelector('i').classList.replace('fa-play', 'fa-pause');
                     } else {
                         audio.pause();
                         playPauseBtn.querySelector('i').classList.replace('fa-pause', 'fa-play');
@@ -417,7 +414,7 @@
             function spawnItem() {
                 const item = document.createElement('div');
                 item.classList.add('falling-item');
-                if (Math.random() < 0.12) { // Slightly higher chance for kitty
+                if (Math.random() < 0.12) {
                     item.innerHTML = `<img src="game-kitty.png" class="kitty-game" data-type="kitty">`;
                 } else {
                     item.innerHTML = `<img src="game-heart.png" data-type="heart">`;
@@ -492,5 +489,3 @@
 
 </body>
 </html>
-
-       

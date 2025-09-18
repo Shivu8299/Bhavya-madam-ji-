@@ -44,10 +44,10 @@
             perspective: 1000px;
         }
         
-        body.modal-open {
+                body.modal-open {
             overflow: hidden;
-            position: fixed;
-            width: 100%;
+                }
+        
         }
 
         .container {
@@ -347,19 +347,16 @@
                 coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
                 pagination: { el: '.swiper-pagination' },
             });
-
             const openModal = (modal) => {
-                lastScrollPosition = window.scrollY;
-                document.body.style.top = `-${lastScrollPosition}px`;
                 document.body.classList.add('modal-open');
                 modal.classList.add('active');
             };
 
             const closeModal = (modal) => {
                 document.body.classList.remove('modal-open');
-                document.body.style.top = '';
-                window.scrollTo(0, lastScrollPosition);
                 modal.classList.remove('active');
+            };
+            
             };
 
             const letterModal = document.getElementById('letter-modal');

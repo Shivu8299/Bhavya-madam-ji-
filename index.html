@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Message for Bhavya</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <style>
@@ -46,7 +46,7 @@
             overflow-x: hidden;
             perspective: 1000px;
         }
-        
+
         /* UPDATED STYLE FOR SCROLL LOCK */
         html.modal-open {
             overflow: hidden;
@@ -157,11 +157,22 @@
         .audio-player { width: 100%; }
         .controls { display: flex; justify-content: center; align-items: center; gap: 20px; }
         .controls button { background: none; border: none; font-size: 24px; color: var(--secondary-purple); cursor: pointer; }
-        
+
+        /* The fix for the modal positioning */
         .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);
-            display: flex; justify-content: center; align-items: center; z-index: 1000;
-            opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
         .modal.active { opacity: 1; visibility: visible; }
         .modal-content {
@@ -177,7 +188,7 @@
         .letter-body { font-size: 16px; color: var(--text-light); line-height: 1.6; margin-bottom: 25px; }
         .letter-signature { text-align: right; }
         .letter-signature p { margin: 0; color: var(--secondary-purple); font-weight: 600; }
-        
+
         #playGameCard { text-align: center; cursor: pointer; }
         #game-modal h2 { font-family: var(--font-display); color: var(--primary-pink); font-size: 28px; margin-bottom: 10px; }
         #game-modal p { color: var(--text-light); margin-bottom: 20px; }
@@ -193,7 +204,7 @@
             font-size: 14px; font-weight: 600; color: #555; animation: bonusFade 2s forwards;
         }
         @keyframes bonusFade { 0% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -50px); } }
-        
+
         .flying-heart {
             position: fixed; font-size: 20px; z-index: 9999; pointer-events: none;
             animation: fly 1s ease-out forwards;
@@ -217,7 +228,7 @@
             </div>
             <button class="open-button" id="openLetterBtn">✨ Click to open ✨</button>
         </div>
-        
+
         <main id="main-content">
             <header class="header card">
                 <h1>to my bhavya</h1>
@@ -275,7 +286,7 @@
                     </div>
                  </div>
             </section>
-            
+
             <section class="card" id="playGameCard">
                  <h2 class="section-title" style="font-size: 24px;">Play a Game!</h2>
                  <p class="section-subtitle" style="margin-top: 0;">Catch hearts to unlock a special message</p>
@@ -291,7 +302,7 @@
             <div class="letter-signature"> <p>With all my love,</p> <p>Yours sincerely, shivshant</p> </div>
         </div>
     </div>
-    
+
     <div id="game-modal" class="modal">
         <div class="modal-content" id="game-start-content">
             <button class="modal-close">&times;</button>
@@ -321,7 +332,7 @@
             const openLetterBtn = document.getElementById('openLetterBtn');
             let playlistSwiper;
             let lastScrollPosition = 0;
-            
+
             const openEnvelope = () => {
                 if (!envelopeWrapper.classList.contains('open')) {
                     envelopeWrapper.classList.add('open');
@@ -486,6 +497,4 @@
             });
         });
     </script>
-
-</body>
-</html>
+    
